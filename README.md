@@ -103,6 +103,76 @@ Homologação
 Produção
 
 ```
+
+### 🌎 Ambientes
+
+Os projetos devem considerar, sempre que aplicável, a separação entre os ambientes:
+
+```
+┌─────────────────────────────┐
+│            GIT              │
+│       Source of Truth       │
+└──────────────┬──────────────┘
+               │
+               ▼
+        ┌──────────────┐
+        │     DEV      │
+        │Desenvolvimento│
+        └──────┬───────┘
+               │
+               ▼
+        ┌──────────────┐
+        │     HML      │
+        │ Homologação  │
+        └──────┬───────┘
+               │
+               ▼
+        ┌──────────────┐
+        │     PRD      │
+        │  Produção    │
+        └──────────────┘
+```
+Cada ambiente deve possuir, quando tecnicamente aplicável:
+
+- Configurações próprias;
+- Secrets próprios;
+- Controle de acesso independente;
+- Recursos dimensionados adequadamente;
+- Pipeline de implantação;
+- Monitoramento;
+- Logs;
+- Auditoria.
+
+### 🔄 Modelo GitOps
+
+Quando aplicável, o modelo recomendado é:
+
+```
+                 ┌───────────────────┐
+                 │      GitHub       │
+                 │  Source of Truth  │
+                 └─────────┬─────────┘
+                           │
+                           ▼
+                 ┌───────────────────┐
+                 │      CI/CD        │
+                 │ Build / Test / Scan│
+                 └─────────┬─────────┘
+                           │
+                           ▼
+                 ┌───────────────────┐
+                 │      Argo CD      │
+                 └─────────┬─────────┘
+                           │
+                           ▼
+                 ┌───────────────────┐
+                 │ Kubernetes / OCP  │
+                 └───────────────────┘
+```
+
+O Git deve atuar como fonte de verdade declarativa, permitindo auditoria, revisão e rollback das alterações.
+
+
 ### 🔒 Segurança dos repositórios
 
 É proibido armazenar diretamente nos repositórios:
