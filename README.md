@@ -107,14 +107,14 @@ Produção
 
 É proibido armazenar diretamente nos repositórios:
 
-❌ Senhas
-❌ Tokens
-❌ API Keys
-❌ Chaves privadas
-❌ Certificados privados
-❌ Credenciais de banco de dados
-❌ Secrets de Kubernetes
-❌ Credenciais de Cloud
+- ❌ Senhas
+- ❌ Tokens
+- ❌ API Keys
+- ❌ Chaves privadas
+- ❌ Certificados privados
+- ❌ Credenciais de banco de dados
+- ❌ Secrets de Kubernetes
+- ❌ Credenciais de Cloud
 
 Utilizar mecanismos apropriados para gerenciamento de segredos, como:
 
@@ -129,7 +129,7 @@ Utilizar mecanismos apropriados para gerenciamento de segredos, como:
 ### 📋 Padrão recomendado para repositórios
 
 Sempre que possível, os projetos devem possuir uma estrutura semelhante a:
-
+```
 repository/
 ├── README.md
 ├── LICENSE
@@ -147,7 +147,7 @@ repository/
 │   ├── ISSUE_TEMPLATE/
 │   └── PULL_REQUEST_TEMPLATE.md
 └── .gitignore
-
+```
 A estrutura deve ser adaptada à natureza de cada projeto.
 
 ### 📝 Documentação
@@ -178,7 +178,7 @@ Documentação arquitetural pode utilizar:
 ### 🔀 Fluxo de contribuição
 
 Alterações nos projetos devem seguir, preferencialmente:
-
+```
 Issue
   │
   ▼
@@ -207,7 +207,7 @@ Merge
   │
   ▼
 CI/CD
-
+```
 Pull Requests devem conter, quando aplicável:
 
 - Descrição da alteração;
@@ -221,7 +221,7 @@ Pull Requests devem conter, quando aplicável:
 ### 🛡️ DevSecOps
 
 A segurança deve estar integrada ao ciclo de desenvolvimento:
-
+```
 PLAN
   │
   ▼
@@ -246,7 +246,7 @@ OPERATE
   │
   ▼
 MONITOR
-
+```
 ### 📊 Observabilidade
 
 Aplicações e infraestrutura devem, quando aplicável, disponibilizar:
@@ -261,7 +261,7 @@ Aplicações e infraestrutura devem, quando aplicável, disponibilizar:
 - Tracing.
 
 A observabilidade deve permitir identificar:
-
+```
 O que aconteceu?
        │
        ▼
@@ -278,7 +278,7 @@ Qual foi a causa?
        │
        ▼
 Como corrigir?
-
+```
 ### 💾 Backup e recuperação
 
 Soluções críticas devem possuir estratégia documentada de:
@@ -338,7 +338,7 @@ Os repositórios devem respeitar as políticas institucionais de segurança da i
 Informações classificadas como sensíveis, confidenciais ou protegidas por legislação específica não devem ser disponibilizadas publicamente.
 
 Antes de publicar qualquer código, configuração ou documentação, verificar:
-
+```
 Código
   │
   ├── Contém credenciais?
@@ -350,7 +350,7 @@ Código
           │
           ▼
        REVIEW
-
+```
 ### 🏛️ IASEP
 
 Instituto de Assistência dos Servidores do Estado do Pará
