@@ -400,3 +400,169 @@ ci	| Pipeline/CI/CD
 build	| Build/dependências
 perf	| Performance
 security	| Correções relacionadas à segurança
+
+---
+### 🔀 Pull Request
+
+Todo Pull Request destinado às branches protegidas deve possuir:
+
+- Descrição da alteração;
+- Referência à Issue;
+- Justificativa técnica;
+- Evidências de testes;
+- Avaliação de impacto;
+- Avaliação de segurança;
+- Evidências do pipeline;
+- Plano de rollback quando aplicável.
+
+Exemplo:
+
+```
+Issue
+  │
+  ▼
+Feature
+  │
+  ▼
+Pull Request
+  │
+  ├── Code Review
+  ├── Unit Tests
+  ├── Integration Tests
+  ├── SAST
+  ├── Dependency Scan
+  ├── Secret Scan
+  └── Build
+          │
+          ▼
+       APPROVED
+          │
+          ▼
+        MERGE
+```
+---
+### 🚀 GitFlow + CI/CD
+
+O GitFlow deve estar integrado ao pipeline CI/CD.
+
+
+```
+                 GitHub
+                    │
+                    ▼
+             ┌─────────────┐
+             │ Pull Request│
+             └──────┬──────┘
+                    │
+                    ▼
+              ┌───────────┐
+              │   Build   │
+              └─────┬─────┘
+                    │
+                    ▼
+              ┌───────────┐
+              │   Tests   │
+              └─────┬─────┘
+                    │
+                    ▼
+              ┌───────────┐
+              │  Security │
+              │   Scan    │
+              └─────┬─────┘
+                    │
+                    ▼
+              ┌───────────┐
+              │   Review  │
+              └─────┬─────┘
+                    │
+                    ▼
+                 Merge
+                    │
+          ┌─────────┴─────────┐
+          ▼                   ▼
+       develop             release
+          │                   │
+          ▼                   ▼
+         DEV                  HML
+                              │
+                              ▼
+                             PRD
+```
+---
+### 🏷️ Versionamento
+
+As versões das aplicações devem utilizar, preferencialmente, Semantic Versioning (SemVer):
+```
+MAJOR.MINOR.PATCH
+```
+Exemplo:
+```
+1.4.2
+```
+Onde:
+
+* MAJOR — alterações incompatíveis;
+* MINOR — novas funcionalidades compatíveis;
+* PATCH — correções compatíveis.
+
+Exemplos:
+```
+1.0.0 → Primeira versão
+1.1.0 → Nova funcionalidade
+1.1.1 → Correção de bug
+2.0.0 → Alteração incompatível
+```
+Tags devem ser criadas na branch main:
+
+```
+git tag -a v1.4.0 -m "Release v1.4.0"
+
+git push origin v1.4.0
+```
+---
+### 🛡️ GitFlow e Governança
+
+O GitFlow deve ser utilizado em conjunto com práticas de governança institucional.
+
+```
+              GOVERNANÇA
+                   │
+        ┌──────────┼──────────┐
+        │          │          │
+        ▼          ▼          ▼
+     GitFlow     CI/CD     DevSecOps
+        │          │          │
+        └──────────┼──────────┘
+                   │
+                   ▼
+              GitHub
+                   │
+                   ▼
+             Aplicações
+                   │
+        ┌──────────┼──────────┐
+        ▼          ▼          ▼
+       DEV        HML        PRD
+```
+O objetivo é garantir que alterações em sistemas institucionais sejam:
+
+* Planejadas;
+* Revisadas;
+* Testadas;
+* Auditáveis;
+* Rastreáveis;
+* Seguras;
+* Reversíveis;
+* Automatizadas.
+
+---
+### 📌 Resumo do fluxo
+
+Etapa	Branch	Ambiente	Objetivo
+Desenvolvimento	feature/*	DEV	Implementação
+Integração	develop	DEV	Integração
+Preparação	release/*	HML	Estabilização
+Produção	main	PRD	Versão oficial
+Emergência	hotfix/*	PRD	Correção crítica
+
+Regra geral: nenhuma alteração deve ser realizada diretamente na branch main. As alterações devem passar pelo processo de desenvolvimento, revisão, validação e CI/CD estabelecido para o projeto.
