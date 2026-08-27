@@ -31,13 +31,13 @@ A estratégia recomendada é baseada no modelo GitFlow, adaptado às necessidade
 ### 📌 Branches principais
 
 Branches Principais (Fixas)
-|Branch	|Finalidade	|Ambiente
-|:-----------------------------------
+| Branch	| Finalidade	| Ambiente
+| -----------------------------------
 | `main`	| Código estável em produção	| PRD
 | `develop`	| Integração das funcionalidades	| DEV/HML
 
 Branches Temporárias (variavéis)
-|Branch	|Finalidade	|Ambiente
+| Branch	| Finalidade	| Ambiente
 |:-----------------------------------
 | `feature/*`	| Desenvolvimento de novas funcionalidades	| DEV
 | `release/*`	| Preparação de uma nova versão	| HML
