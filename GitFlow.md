@@ -29,16 +29,23 @@ A estratégia recomendada é baseada no modelo GitFlow, adaptado às necessidade
 ```
 
 ### 📌 Branches principais
-Branch	Finalidade	Ambiente
-main	Código estável em produção	PRD
-develop	Integração das funcionalidades	DEV/HML
-feature/*	Desenvolvimento de novas funcionalidades	DEV
-release/*	Preparação de uma nova versão	HML
-hotfix/*	Correção emergencial de produção	PRD
+
+Branches Principais (Fixas)
+|Branch	|Finalidade	|Ambiente
+|:-----------------------------------
+| `main`	| Código estável em produção	| PRD
+| `develop`	| Integração das funcionalidades	| DEV/HML
+
+Branches Temporárias (variavéis)
+|Branch	|Finalidade	|Ambiente
+|:-----------------------------------
+| `feature/*`	| Desenvolvimento de novas funcionalidades	| DEV
+| `release/*`	| Preparação de uma nova versão	| HML
+| `hotfix/*`	| Correção emergencial de produção	| PRD
 
 ### 🔵 main
 
-A branch main representa o estado oficial e estável da aplicação em produção.
+A branch `main` representa o estado oficial e estável da aplicação em produção.
 
 Características:
 
@@ -63,11 +70,11 @@ main
 ---
 ### 🟢 develop
 
-A branch develop representa a integração das alterações que estão sendo desenvolvidas.
+A branch `develop` representa a integração das alterações que estão sendo desenvolvidas.
 
 Características:
 
-- Recebe Pull Requests das branches feature/*;
+- Recebe Pull Requests das branches `feature/*`;
 - Deve passar por validações automatizadas;
 - Pode ser utilizada para implantação no ambiente DEV;
 - Deve permanecer em estado funcional;
@@ -89,7 +96,7 @@ develop
 ---
 ### 🟡 feature/*
 
-Branches feature/* são utilizadas para desenvolvimento de novas funcionalidades, melhorias ou alterações planejadas.
+Branches `feature/*` são utilizadas para desenvolvimento de novas funcionalidades, melhorias ou alterações planejadas.
 
 Padrão:
 ```
@@ -121,15 +128,19 @@ Em seguida, deve ser aberto um Pull Request para develop.
 ---
 ### 🟠 release/*
 
-Branches release/* são utilizadas para preparar uma nova versão que será promovida para produção.
+Branches `release/*` são utilizadas para preparar uma nova versão que será promovida para produção.
 
 Padrão:
 
+```
 release/<versao>
+```
 
 Exemplo:
 
+```
 release/1.4.0
+```
 
 Fluxo:
 ```
@@ -153,7 +164,7 @@ release/1.4.0
    ▼
  PRD
 ```
-Durante uma release/*, devem ser priorizados:
+Durante uma `release/*`, devem ser priorizados:
 
 - Correções de bugs;
 - Ajustes de configuração;
@@ -162,4 +173,4 @@ Durante uma release/*, devem ser priorizados:
 - Documentação;
 - Atualização de versão.
 
-Novas funcionalidades devem retornar para feature/* e não ser incluídas diretamente durante a estabilização da release.
+Novas funcionalidades devem retornar para `feature/*` e não ser incluídas diretamente durante a estabilização da release.
