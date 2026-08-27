@@ -310,3 +310,93 @@ Fluxo de uma funcionalidade
        ▼
 14. Deploy PRD
 ```
+---
+
+### 🔐 Proteção das Branches
+
+As branches críticas devem possuir proteção no GitHub.
+
+main
+
+Recomenda-se:
+
+❌ Proibir push direto;
+
+❌ Proibir force push;
+
+✅ Pull Request obrigatório;
+
+✅ Aprovação obrigatória;
+
+✅ Code Review;
+
+✅ Status checks obrigatórios;
+
+✅ Pipeline CI/CD obrigatório;
+
+✅ Scan de segurança;
+
+✅ Histórico protegido;
+
+✅ Tags de versão.
+
+staging / developer
+
+Recomenda-se:
+
+❌ Proibir push direto;
+
+✅ Pull Request obrigatório;
+
+✅ CI obrigatório;
+
+✅ Testes automatizados;
+
+✅ Code Review;
+
+✅ Scan de qualidade;
+
+✅ Scan de dependências.
+
+---
+
+### 📝 Padrão de Commits
+
+Recomenda-se utilizar Conventional Commits.
+
+Formato:
+```
+<tipo>(<escopo>): <descrição>
+```
+
+Exemplos:
+```
+feat(api): adiciona endpoint de beneficiários
+
+fix(auth): corrige autenticação OIDC
+
+docs(readme): atualiza documentação do projeto
+
+refactor(database): reorganiza camada de persistência
+
+test(api): adiciona testes de integração
+
+chore(deps): atualiza dependências
+
+ci(pipeline): adiciona análise SAST
+```
+
+Tipos recomendados:
+
+Tipo	| Utilização
+:---| :---:
+feat	| Nova funcionalidade
+fix	| Correção de bug
+docs	| Documentação
+refactor	| Refatoração
+test	| Testes
+chore	| Manutenção
+ci	| Pipeline/CI/CD
+build	| Build/dependências
+perf	| Performance
+security	| Correções relacionadas à segurança
