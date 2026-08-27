@@ -16,15 +16,16 @@ A estratégia recomendada é baseada no modelo GitFlow, adaptado às necessidade
     release/*
        │
 ┌──────┴───────┐
-│    develop   │
-│    DEV/HML   │
+│    staging   │
+│  HOMOLOGAÇÃO │
 └──────▲───────┘
        │
     feature/*
        │
-┌──────┴───────┐
-│   Developer  │
-└──────────────┘
+┌──────┴─────────┐
+│   Developer    │
+│ DESENVOLVIMENTO│
+└────────────────┘
 
 ```
 
@@ -34,7 +35,8 @@ Branches Principais (Fixas)
 Branch	| Finalidade	| Ambiente
 :------| :--------: | :--------:
 `main`	| Código estável em produção	| PRD
-`develop`	| Integração das funcionalidades	| DEV/HML
+`staging` | Testes finais | HML
+`develop`	| Integração das funcionalidades	| DEV
 
 Branches Temporárias (variavéis)
 Branch	| Finalidade	| Ambiente
@@ -67,6 +69,31 @@ main
 ├── v1.2.0
 └── v2.0.0
 ```
+---
+###  Staging
+A branch `staging` representa a replica do ambiente de produção para a realização de testes e validações.
+
+Características:
+
+- Recebe Pull Requests das branches `release/*`;
+- Deve passar por validações automatizadas;
+- Pode ser utilizada para implantação no ambiente HML;
+- Deve permanecer em estado funcional;
+- Não deve receber alterações diretamente.
+
+Fluxo:
+```
+release/*
+  │
+  │
+Pull Request
+  ▼
+staging
+  │
+  ▼
+ HML
+```
+
 ---
 ### 🟢 develop
 
