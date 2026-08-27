@@ -31,17 +31,17 @@ A estratégia recomendada é baseada no modelo GitFlow, adaptado às necessidade
 ### 📌 Branches principais
 
 Branches Principais (Fixas)
-| Branch	| Finalidade	| Ambiente
-| -----------------------------------
-| `main`	| Código estável em produção	| PRD
-| `develop`	| Integração das funcionalidades	| DEV/HML
+Branch	| Finalidade	| Ambiente
+:-----------------------------------
+`main`	| Código estável em produção	| PRD
+`develop`	| Integração das funcionalidades	| DEV/HML
 
 Branches Temporárias (variavéis)
-| Branch	| Finalidade	| Ambiente
-|:-----------------------------------
-| `feature/*`	| Desenvolvimento de novas funcionalidades	| DEV
-| `release/*`	| Preparação de uma nova versão	| HML
-| `hotfix/*`	| Correção emergencial de produção	| PRD
+Branch	| Finalidade	| Ambiente
+:-----------------------------------
+`feature/*`	| Desenvolvimento de novas funcionalidades	| DEV
+`release/*`	| Preparação de uma nova versão	| HML
+`hotfix/*`	| Correção emergencial de produção	| PRD
 
 ### 🔵 main
 
@@ -174,3 +174,112 @@ Durante uma `release/*`, devem ser priorizados:
 - Atualização de versão.
 
 Novas funcionalidades devem retornar para `feature/*` e não ser incluídas diretamente durante a estabilização da release.
+
+---
+### 🔴 hotfix/*
+
+Branches `hotfix/*` são destinadas a correções emergenciais em produção.
+
+Padrão:
+```
+hotfix/<versao>-<descricao>
+```
+
+Exemplo:
+```
+hotfix/1.4.1-corrigir-autenticacao
+```
+
+Fluxo:
+```
+                ┌──────────────┐
+                │     main     │
+                │     PRD      │
+                └──────┬───────┘
+                       │
+                       ▼
+              hotfix/1.4.1-xxx
+                       │
+                       ▼
+                 Testes/CI
+                       │
+                       ▼
+                  Pull Request
+                       │
+              ┌────────┴────────┐
+              ▼                 ▼
+            main             develop
+              │
+              ▼
+             PRD
+```
+O hotfix deve ser utilizado somente quando a correção não puder aguardar o ciclo normal de uma nova release.
+
+
+### 🔄 Fluxo completo
+
+O fluxo recomendado para os projetos do IASEP é:
+
+```
+                         ┌───────────────┐
+                         │     main      │
+                         │     PRD       │
+                         └───────▲───────┘
+                                 │
+                              release
+                                 │
+                         ┌───────┴───────┐
+                         │    develop    │
+                         │    DEV/HML    │
+                         └───────▲───────┘
+                                 │
+                              feature
+                                 │
+                         ┌───────┴───────┐
+                         │    Developer  │
+                         └───────────────┘
+```
+Fluxo de uma funcionalidade
+
+```
+1. Criar Issue
+       │
+       ▼
+2. Criar feature/*
+       │
+       ▼
+3. Desenvolvimento
+       │
+       ▼
+4. Testes locais
+       │
+       ▼
+5. Pull Request
+       │
+       ▼
+6. Code Review
+       │
+       ▼
+7. CI/CD
+       │
+       ▼
+8. Merge → develop
+       │
+       ▼
+9. Deploy DEV
+       │
+       ▼
+10. Criar release/*
+       │
+       ▼
+11. Deploy HML
+       │
+       ▼
+12. Homologação
+       │
+       ▼
+13. Pull Request → main
+       │
+       ▼
+14. Deploy PRD
+```
