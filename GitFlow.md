@@ -565,4 +565,5 @@ Preparação	release/*	HML	Estabilização
 Produção	main	PRD	Versão oficial
 Emergência	hotfix/*	PRD	Correção crítica
 
-Regra geral: nenhuma alteração deve ser realizada diretamente na branch main. As alterações devem passar pelo processo de desenvolvimento, revisão, validação e CI/CD estabelecido para o projeto.
+> Regra geral: nenhuma alteração deve ser realizada diretamente na branch main.
+> As alterações devem passar pelo processo de desenvolvimento, revisão, validação e CI/CD estabelecido para o projeto.
